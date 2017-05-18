@@ -8,9 +8,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <div>
+            <asp:Repeater runat="server" ID="childSites">
+                <ItemTemplate>
+                    <iframe src="<%#Eval("Url") %>"></iframe>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
     </form>
 </body>
 </html>
+
+

@@ -14,9 +14,30 @@ namespace password.UI
         {
             Session.Clear();
 
-            HttpHelper.SendGet("http://www.domain1.com/SignOut.aspx");
-            //HttpHelper.SendGet("http://www.domain2.com/SignOut.aspx");
-            //HttpHelper.SendGet("http://www.domain3.com/SignOut.aspx");
+            var cookie = HttpContext.Current.Request.Cookies["passwordId"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddYears(-3);
+                Response.Cookies.Add(cookie);
+            }
+
+            cookie = HttpContext.Current.Request.Cookies["domain1Id"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddYears(-3);
+                Response.Cookies.Add(cookie);
+            }
+
+            childSites.DataSource = new List<Site>(){
+                new Site {Url = "http://www.domain1.com" },
+                new Site {Url = "http://www.domain2.com" },
+            };
+            childSites.DataBind();
         }
+    }
+
+    public class Site
+    {
+        public string Url { get; set; }
     }
 }
