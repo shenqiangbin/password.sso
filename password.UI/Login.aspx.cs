@@ -34,6 +34,9 @@ namespace password.UI
 
             if (!string.IsNullOrEmpty(Request["returnUrl"]))
                 Response.Redirect(Request["returnUrl"] + "?&hasLogin=true&userId=" + Session["UserId"]);
+            else
+                Response.Redirect("/UserInfo.aspx");
+
         }
     }
 }

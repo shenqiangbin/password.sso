@@ -12,15 +12,18 @@ namespace password.UI
         protected void Page_Load(object sender, EventArgs e)
         {
             //如果登陆了
-            if (Session["UserId"] != null && !string.IsNullOrEmpty(Session["UserId"].ToString()))
+            var userId = Session["UserId"];
+            string returnUrl = Request["returnUrl"];
+
+            if (userId != null && !string.IsNullOrEmpty(userId.ToString()))
             {
-                if (!string.IsNullOrEmpty(Request["returnUrl"]))
-                    Response.Redirect(Request["returnUrl"] + "?&hasLogin=true&userId=" + Session["UserId"]);
+                if (!string.IsNullOrEmpty(returnUrl))
+                    Response.Redirect(returnUrl + "?hasLogin=true&userId=" + userId);
                 else
                     Response.Redirect("/UserInfo.aspx");
             }
             else
-                Response.Redirect("/login.aspx?returnUrl=" + Request["returnUrl"]);
+                Response.Redirect("/login.aspx?returnUrl=" + returnUrl);
         }
     }
 }

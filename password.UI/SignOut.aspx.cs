@@ -29,8 +29,8 @@ namespace password.UI
             }
 
             childSites.DataSource = new List<Site>(){
-                new Site {Url = "http://www.domain1.com" },
-                new Site {Url = "http://www.domain2.com" },
+                new Site {Url = "http://www.domain1.com/SignOut.aspx" },
+                new Site {Url = "http://www.domain2.com/SignOut.aspx" },
             };
             childSites.DataBind();
         }
